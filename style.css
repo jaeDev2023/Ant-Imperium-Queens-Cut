@@ -1,4 +1,82 @@
+/* General styling */
 body {
-    color: salmon;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
     background-color: #333;
+    color: salmon;
+}
+
+/* Sliders styling */
+.top-sliders {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+.slider-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    margin: 10px;
+}
+
+label {
+    font-size: 1em;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input[type="range"] {
+    width: 80%;
+}
+
+span {
+    margin-top: 5px;
+    font-size: 0.9em;
+}
+
+/* Map styling */
+.map-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 100px);
+    /* Full height minus slider section */
+}
+
+#map {
+    display: grid;
+    width: 90%;
+    /* max-width: 600px; */
+    aspect-ratio: 1;
+    /* Keep square aspect ratio */
+    grid-template-columns: repeat(20, 1fr);
+    /* 20 columns */
+    grid-template-rows: repeat(20, 1fr);
+    /* 20 rows */
+}
+
+.cell {
+    width: 100%;
+    height: 100%;
+}
+
+.food-zone {
+    background-color: green;
+}
+
+.water-zone {
+    background-color: blue;
+}
+
+.waste-zone {
+    background-color: brown;
+}
+
+.landscape {
+    background-color: #587B7f;
 }

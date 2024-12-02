@@ -5,10 +5,26 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Ant Imperium: Queen's Cut</title>
         <link rel="stylesheet" href="style.css">
-        <!--https://jaedev2023.github.io/Ant-Imperium-Queens-Cut/-->
+        <!-- https://jaedev2023.github.io/Ant-Imperium-Queens-Cut/ -->
     </head>
     <body>
-        <p>Hello, Queen</p>
+        <div class="top-sliders">
+            <div class="slider-container">
+                <label for="tempSlider">Temp</label>
+                <input type="range" id="tempSlider" name="tempSlider" min="0" max="100" value="50" step="1">
+                <span id="tempValue">50</span>
+            </div>
+            <div class="slider-container">
+                <label for="lightSlider">Light</label>
+                <input type="range" id="lightSlider" name="lightSlider" min="0" max="100" value="30" step="1">
+                <span id="lightValue">30</span>
+            </div>
+        </div>
+
+        <!-- Map Section -->
+        <div class="map-container">
+            <div id="map"></div>
+        </div>
 
 
         <script src="script.js"></script>
