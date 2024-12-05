@@ -7,16 +7,17 @@
         <link rel="stylesheet" href="style.css">
         <!-- https://jaedev2023.github.io/Ant-Imperium-Queens-Cut/ -->
     </head>
+    
     <body>
         <div class="top-sliders">
             <div class="slider-container">
                 <label for="tempSlider">Temp</label>
-                <input type="range" id="tempSlider" name="tempSlider" min="0" max="100" value="50" step="1">
+                <input type="range" id="tempSlider" name="tempSlider" min="0" max="100" value="50" step="1"disabled>
                 <span id="tempValue">50</span>
             </div>
             <div class="slider-container">
                 <label for="lightSlider">Light</label>
-                <input type="range" id="lightSlider" name="lightSlider" min="0" max="100" value="30" step="1">
+                <input type="range" id="lightSlider" name="lightSlider" min="0" max="100" value="30" step="1" disabled>
                 <span id="lightValue">30</span>
             </div>
         </div>
@@ -25,6 +26,35 @@
         <div class="map-container">
             <div id="map"></div>
         </div>
+
+        <!-- Colony Health Bar Section -->
+         <div class="health-bar-container">
+            <div id="healthBar">
+                <div id="healthFill"></div>
+            </div>
+         </div>
+
+        <!-- Resource Controls-->
+         <div class="resource-controls">
+            <div class="resource">
+                <label for="foodSlider">Food</label>
+                <input type="range" id="foodSlider" name="food" min="0" max="100" value="50" disabled>
+                <button id="addFood">Add Food</button>
+                <span id="foodValue">50</span>
+            </div>
+            <div class="resource">
+                <label for="waterSlider">Water</label>
+                <input type="range" id="waterSlider" name="water" min="0" max="100" value="50" disabled>
+                <button id="addWater">Add Water</button>
+                <span id="waterValue">50</span>
+            </div>
+            <div class="resource">
+                <label for="wasteSlider">Waste</label>
+                <input type="range" id="wasteSlider" name="waste" min="0" max="100" value="50" disabled>
+                <button id="removeWaste">Remove Waste</button>
+                <span id="wasteValue">50</span>
+            </div>
+         </div>
 
 
         <script src="script.js"></script>

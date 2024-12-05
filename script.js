@@ -47,14 +47,94 @@ for (let row = 0; row < rows; row++) {
 // Get the slider and value elements
 const tempSlider = document.getElementById('tempSlider');
 const tempValue = document.getElementById('tempValue');
+const lightSlider = document.getElementById('lightSlider');
+const lightValue = document.getElementById('lightValue')
 
 // Update the value display when the slider is moved
-tempSlider.addEventListener('input', function () {
-    tempValue.textContent = tempSlider.value; // Display the current value
+tempSlider.addEventListener('input', () => {
+    tempValue.textContent = tempSlider.value;
 });
 
+lightSlider.addEventListener('input', () => {
+    lightValue.textContent = lightSlider.value;
+});
 
+// Health Bar
+const healthBar = document.getElementById('healthBar');
+const healthFill = document.getElementById('healthFill');
+let health = 50;
 
+// Buttons and sliders for resources
+const foodSlider = document.getElementById('foodSlider');
+const foodValue = document.getElementById('foodValue');
+const addFood = document.getElementById('addFood');
 
-// Example: Moving the ant
-// moveAnt(100, 100); // Moves the ant to (100px, 50px)
+const waterSlider = document.getElementById('waterSlider');
+const waterValue = document.getElementById('waterValue');
+const addWater = document.getElementById('addWater');
+
+const wasteSlider = document.getElementById('wasteSlider');
+const wasteValue = document.getElementById('wasteValue');
+const removeWaste = document.getElementById('removeWaste');
+
+function updateSlider(slider, value, increment) {
+    slider.value = Math.min(Math.max(0, parseInt(slider.value) + increment), 100);
+    value.textContent = slider.value;
+}
+
+// Buttons for Resources
+addFood.addEventListener('click', () => {
+    updateSlider(foodSlider, foodValue, 10);
+    health = Math.min(100, health + 5)
+    healthFill.style.width = `${health}%`;
+});
+
+addWater.addEventListener('click', () => {
+    updateSlider(waterSlider, waterValue, 10);
+    health = Math.min(100, health + 5);
+    healthFill.style.width = `${health}%`;
+})
+
+removeWaste.addEventListener('click', () => {
+    updateSlider(wasteSlider, wasteValue, -10);
+    health = Math.min(100, health + 5);
+    healthFill.style.width = `${health}%`;
+})
+
+// Ant functions
+document.addEventListener('DOMContentLoaded', () => {
+    function addAnt() {
+        const map = document.getElementById('map');
+        const ant = document.createElement('div');
+        ant.classList.add('ant');
+        map.appendChild(ant);
+
+        // Initial position
+        let x = 0;
+        let y = 0;
+        moveAnt(ant, x, y);
+    }
+
+    // Animate ant
+    function moveAnt(ant, startX, startY) {
+        let x = startX;
+        let y = startY;
+
+        const map = document.getElementById('map');
+        const cellSize = map.clientWidth / 20; // Assuming 20x20 grid
+        const moveInterval = setInterval(() => {
+            x += cellSize / 2;
+            y += cellSize / 2;
+
+            // Boundary checks
+            if (x >= map.clientWidth - cellSize || y >= map.clientHeight - cellSize) {
+                clearInterval(moveInterval); // Stops ant at the boundary
+            } else {
+                ant.style.transform = `translate(${x}px, ${y}px)`;
+            }
+        }, 200); // Move every 200ms
+    }
+
+    // Add the ant on page load
+    addAnt();
+});
